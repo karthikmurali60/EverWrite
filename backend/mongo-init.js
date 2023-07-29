@@ -1,12 +1,5 @@
-db.createUser(
-    {
-        user: "everwrite",
-        pwd: "passwd",
-        roles: [
-            {
-                role: "readWrite",
-                db: "everwrite"
-            }
-        ]
-    }
-);
+conn = new Mongo();
+db = conn.getDB("everwrite");
+
+db.createCollection("users");
+db.createCollection("notes");
