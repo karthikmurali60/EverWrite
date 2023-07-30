@@ -1,0 +1,12 @@
+article.signup-article .signup-info {
+  flex-grow: 1;
+  padding-left: 12px;
+}
+
+article.signup-article {
+  display: flex;
+  justify-content: flex-start;
+  background: #e4e0e9;
+  height: 100vh;
+  max-height: 100vh;
+}

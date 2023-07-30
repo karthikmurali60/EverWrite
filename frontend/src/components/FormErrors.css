@@ -1,0 +1,8 @@
+.errors {
+    padding: 16px;
+    border-radius: 8px;
+    background: black;
+    color: white;
+    margin-top: 16px;
+    font-size: 14px;
+  }

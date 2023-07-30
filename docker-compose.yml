@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: ./frontend
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:4567
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+    networks:
+      - everwrite-network
+    depends_on:
+      - backend
+
   backend:
     build: ./backend
     ports:

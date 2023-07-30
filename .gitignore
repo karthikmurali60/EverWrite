@@ -1,2 +1,8 @@
-__pycache__
-*.env
+frontend/build/*
+frontend/node_modules
+.DS_Store
+
+# testing
+frontend/coverage
+
+**/__pycache__/
