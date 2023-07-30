@@ -4,7 +4,8 @@ class Signin:
     def run(request):
         model = {
             'errors': None,
-            'data': None
+            'data': None,
+            'code': None
         }
 
         data = request.json
@@ -17,8 +18,10 @@ class Signin:
         user = users_collection.find_one({'username': username})
 
         if user:
-            model['data'] = 'User logged in successfully'
+            model['data'] = {'msg': 'User logged in successfully'}
+            model['code'] = 200
         else:
-            model['errors'] = 'User not found'
+            model['errors'] = {'msg':'User not found'}
+            model['code'] = 404
         
         return model

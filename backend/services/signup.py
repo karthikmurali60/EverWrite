@@ -6,7 +6,8 @@ class Signup:
     def run(request):
         model = {
             'errors': None,
-            'data': None
+            'data': None,
+            'code': None
         }
 
         data = request.json
@@ -19,10 +20,12 @@ class Signup:
         users_collection = db['users']
 
         if users_collection.find_one({'username': username}):
-            model['errors'] = 'Username already exists'
+            model['errors'] = {'msg': 'Username already exists'}
+            model['code'] = 409
         else:
             user = {'name': name, 'username': username, 'created_at': now}
             users_collection.insert_one(user)
-            model['data'] = 'User registered successfully'
+            model['data'] = {'msg': 'User registered successfully'}
+            model['code'] = 201
         
         return model
