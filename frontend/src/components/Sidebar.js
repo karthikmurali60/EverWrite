@@ -1,8 +1,16 @@
 import "./Sidebar.css";
 import React from "react";
 import NavigationLink from "./NavigationLink";
+import Cookies from "js-cookie";
 
 export default function Sidebar(props) {
+  const onClickSignOut = async (event) => {
+    event.preventDefault();
+    Cookies.remove("username");
+    Cookies.remove("name");
+    window.location.href = `/`;
+  };
+
   return (
     // <div><p>Hello</p></div>
     <nav>
@@ -16,6 +24,9 @@ export default function Sidebar(props) {
         <li>B</li>
         <li>C</li>
       </ul>
+      <button type="submit" className="signout-button" onClick={onClickSignOut}>
+        Sign out
+      </button>
     </nav>
   );
 }

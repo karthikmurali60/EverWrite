@@ -63,3 +63,15 @@ nav button.post {
   text-align: center;
   margin-top: 24px;
 }
+
+nav .signout-button {
+  background: #e4e0e9;
+  cursor: pointer;
+  width: 20%;
+  text-align: center;
+  height: 40px;
+  font-size: 20px;
+  margin: 0px;
+  position: absolute;
+  bottom: 0px;
+}
