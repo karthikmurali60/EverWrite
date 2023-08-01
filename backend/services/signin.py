@@ -1,6 +1,6 @@
 from lib.mongo import Mongo
 
-class Signin:
+class SignIn:
     def run(request):
         model = {
             'errors': None,

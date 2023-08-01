@@ -2,7 +2,7 @@ from lib.mongo import Mongo
 from datetime import datetime, timezone
 
 
-class Signup:
+class SignUp:
     def run(request):
         model = {
             'errors': None,
