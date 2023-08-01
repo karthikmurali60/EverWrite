@@ -18,7 +18,7 @@ class SignIn:
         user = users_collection.find_one({'username': username})
 
         if user:
-            model['data'] = {'msg': 'User logged in successfully'}
+            model['data'] = {'msg': 'User logged in successfully', 'name': user['name']}
             model['code'] = 200
         else:
             model['errors'] = {'msg':'User not found'}

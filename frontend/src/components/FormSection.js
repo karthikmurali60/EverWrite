@@ -37,6 +37,7 @@ export default function FormSection() {
         setErrors: setErrors,
         success: function (data) {
           Cookies.set("username", username);
+          Cookies.set("name", data['name']);
           window.location.href = `/home`;
         },
       });
