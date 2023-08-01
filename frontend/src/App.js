@@ -1,29 +1,29 @@
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
+import PrivateRoutes from './utils/PrivateRoutes';
+import Cookies from 'js-cookie';
 import './App.css';
 import React from 'react';
 
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage />
-  },
-  {
-    path: "/home",
-    element: <HomePage />
-  }
-]);
-
 function App() {
+  function isLoggedIn() {
+    if (Cookies.get('username') !== undefined) {
+        return true;
+    }
+
+    return false;
+  }
+
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <Router>
+        <Routes>
+          <Route element={<PrivateRoutes/>}>
+              <Route path='/home' element={<HomePage/>} />
+          </Route>
+          <Route path='/' element={isLoggedIn() ? <HomePage/> : <LandingPage/>}/>
+        </Routes>
+    </Router>
   );
 }
 

@@ -2,6 +2,7 @@ import "./FormSection.css";
 import React from "react";
 import FormErrors from "./FormErrors";
 import { post } from "../lib/Requests";
+import Cookies from "js-cookie";
 
 export default function FormSection() {
   const [state, setState] = React.useState({ form: "" });
@@ -35,6 +36,7 @@ export default function FormSection() {
       post(url, payload_data, {
         setErrors: setErrors,
         success: function (data) {
+          Cookies.set("username", username);
           window.location.href = `/home`;
         },
       });
@@ -68,7 +70,8 @@ export default function FormSection() {
       post(url, payload_data, {
         setErrors: setErrors,
         success: function (data) {
-          // console.log(data);
+          Cookies.set("username", username);
+          Cookies.set("name", name);
           window.location.href = `/home`;
         },
       });
