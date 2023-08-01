@@ -1,4 +1,5 @@
 import './BrandingSection.css'
+import React from "react";
 
 export default function BrandingSection() {
     return (

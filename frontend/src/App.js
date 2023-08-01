@@ -1,6 +1,7 @@
 import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import './App.css';
+import React from 'react';
 
 import {
   createBrowserRouter,

@@ -6,7 +6,7 @@ article.signup-article .signup-info {
 article.signup-article {
   display: flex;
   justify-content: flex-start;
-  background: #e4e0e9;
+  background: #1D201F;
   height: 100vh;
   max-height: 100vh;
 }

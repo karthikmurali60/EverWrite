@@ -75,7 +75,8 @@ article.signup-article button[type="submit"] {
   border-radius: 6px;
   padding: 18px 28px;
   font-size: 16px;
-  background: #e4e0e9;
+  background: #1D201F;
+  color: #fff;
 }
 
 .already-have-an-account {
