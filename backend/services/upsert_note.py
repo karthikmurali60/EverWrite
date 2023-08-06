@@ -38,8 +38,9 @@ class UpsertNote:
             model['data'] = {'msg': 'Note updated successfully'}
             model['code'] = 200
         else:
-            notes_collection.insert_one({'title': data['title'], 'content': data['content'],
+            document = notes_collection.insert_one({'title': data['title'], 'content': data['content'],
                                         'username': data['username'], 'tags': data['tags'], 'created_at': now, 'updated_at': now})
-            model['data'] = {'msg': 'Note created successfully'}
+
+            model['data'] = {'msg': 'Note created successfully', 'note_id': str(document.inserted_id)}
             model['code'] = 201
         return model
