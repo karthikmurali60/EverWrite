@@ -84,7 +84,6 @@ export default function Sidebar(props) {
             color: "#FFFFFF",
             paddingY: "12px",
             paddingX: "24px",
-            paddingTop: "205%"
           }}
           onClick={() => {
             Cookies.remove("username");
