@@ -34,12 +34,12 @@ class UpsertNote:
                 model['code'] = 404
                 return model
             notes_collection.update_one({'_id': ObjectId(data['_id'])}, {'$set': {'title': data['title'], 'content': data['content'],
-                                        'tags': data['tags'], 'updated_at': now}})
+                                        'tags': data['tags'], 'updated_at': now, 'deleted': data['deleted'] if 'deleted' in data else False}})
             model['data'] = {'msg': 'Note updated successfully'}
             model['code'] = 200
         else:
             document = notes_collection.insert_one({'title': data['title'], 'content': data['content'],
-                                        'username': data['username'], 'tags': data['tags'], 'created_at': now, 'updated_at': now})
+                                        'username': data['username'], 'tags': data['tags'], 'created_at': now, 'updated_at': now, 'deleted': False})
 
             model['data'] = {'msg': 'Note created successfully', 'note_id': str(document.inserted_id)}
             model['code'] = 201

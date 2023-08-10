@@ -13,7 +13,7 @@ def load(app):
     @app.route('/<username>/notes', methods=['GET'])
     @cross_origin()
     def list_notes(username):
-        model = ListNotes.run(username)
+        model = ListNotes.run(request, username)
         return model_json(model)
 
     @app.route('/<username>/notes/<note_id>', methods=['GET'])
