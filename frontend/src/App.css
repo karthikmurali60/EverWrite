@@ -41,6 +41,14 @@
   width: 80%;
   margin-left: 20%;
   margin-top: 5%;
+  padding: 1%;
   height: 100%;
-  background: lightblue;
+  /* background: lightblue; */
+}
+
+.cardGrid {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 300px);
+  /* justify-content: center; */
 }
