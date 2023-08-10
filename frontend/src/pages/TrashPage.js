@@ -6,7 +6,7 @@ import { get } from "../lib/Requests";
 import Cookies from "js-cookie";
 import { Circles } from "react-loader-spinner";
 
-export default function HomePage() {
+export default function TrashPage() {
   const [notes, setNotes] = React.useState([]);
   const dataFetchedRef = React.useRef(false);
   const [user, setUser] = React.useState(Cookies.get("username"));

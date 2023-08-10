@@ -17,6 +17,8 @@ export default function NoteCard(props) {
     return str.length > l ? str.substring(0, l - 3) + "..." : str;
   }
 
+  const url = `${user}/notes/${props.data._id}`;
+
   function deleteNote() {
     console.log("Deleting");
     const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
@@ -124,7 +126,7 @@ export default function NoteCard(props) {
         }}
         raised="true"
       >
-        <CardActionArea href="https://google.com">
+        <CardActionArea href={url}>
           <CardContent>
             <Typography variant="h5" component="div">
               <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
