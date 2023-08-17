@@ -1,9 +1,17 @@
-import { Drawer, List, Stack, Toolbar, Button, ListItemButton, ListItemIcon } from "@mui/material";
+import {
+  Drawer,
+  List,
+  Stack,
+  Toolbar,
+  Button,
+  ListItemButton,
+  ListItemIcon,
+} from "@mui/material";
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import SendIcon from "@mui/icons-material/Send";
+import CreateIcon from '@mui/icons-material/Create';
 import Cookies from "js-cookie";
 import { put } from "../lib/Requests";
 
@@ -14,20 +22,20 @@ export default function Sidebar(props) {
     try {
       const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
       const payload_data = {
-        title: '',
-        content: '',
+        title: "Title",
+        content: "",
         username: user,
         tags: [],
       };
 
       put(url, payload_data, {
         success: function (data) {
-          window.location.href = `/${user}/notes/${data['note_id']}`;
+          window.location.href = `/${user}/notes/${data["note_id"]}`;
         },
       });
       // Handle response
     } catch (error) {
-      console.error('Error saving content:', error);
+      console.error("Error saving content:", error);
     }
   };
 
@@ -52,12 +60,21 @@ export default function Sidebar(props) {
             {/* <Avatar src={assets.images.logo} /> */}
           </Stack>
         </Toolbar>
-        <Button variant="contained" endIcon={<SendIcon />}
+        <Button
+          variant="contained"
+          endIcon={<CreateIcon />}
           component={Link}
           sx={{
+            "&: hover": {
+              backgroundColor: "#e4e0e9",
+              color: "#000000"
+            },
             color: "#FFFFFF",
             paddingY: "12px",
-            paddingX: "24px"
+            paddingX: "24px",
+            marginX: "4rem",
+            marginY: "1rem",
+            backgroundColor: "#2E3231",
           }}
           onClick={() => {
             handleClick();
