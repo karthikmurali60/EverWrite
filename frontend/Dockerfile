@@ -6,7 +6,7 @@ COPY . /frontend
 
 WORKDIR /frontend
 
-RUN npm install
+RUN npm install --force
 
 EXPOSE ${PORT}
 
