@@ -3,15 +3,19 @@ import { Editor } from "@tinymce/tinymce-react";
 import Cookies from "js-cookie";
 import SideBar from "../components/Sidebar.js";
 import Topbar from "../components/Topbar.js";
-import Button from '@mui/material/Button';
-import { FormControl } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import { FormControl } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { get, put } from "../lib/Requests";
+import { Circles } from "react-loader-spinner";
+import ChipInput from "material-ui-chip-input";
 
 export default function EditorPage(props) {
     const [user, setUser] = React.useState(Cookies.get("username"));
     const [content, setContent] = React.useState("");
     const [title, setTitle] = React.useState("");
+    const [tags, setTags] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
     const dataFetchedRef = React.useRef(false);
 
     const loadData = async () => {
@@ -19,8 +23,9 @@ export default function EditorPage(props) {
         const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes/${id}`;
         get(url, {
             success: function (data) {
-                console.log(data);
+                setIsLoading(false);
                 setTitle(data.title);
+                setTags(data.tags);
                 setContent(data.content);
             },
         });
@@ -35,34 +40,39 @@ export default function EditorPage(props) {
     }, []);
 
     const title_onchange = (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setTitle(event.target.value);
     };
 
     const content_onchange = (event) => {
-        console.log(event);
+        // console.log(event);
         setContent(event);
+    };
+
+    const tags_onchange = (event) => {
+        // console.log(event);
+        setTags(event);
+        // console.log(tags);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("submit", content);
         try {
-            const id = window.location.pathname.split('/')[3];
+            const id = window.location.pathname.split("/")[3];
             const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
             const payload_data = {
                 _id: id,
                 title: title,
                 content: content,
+                tags: [...tags],
                 username: user,
-                tags: [],
             };
 
             put(url, payload_data, {
                 success: function () { },
             });
         } catch (error) {
-            console.error('Error saving content:', error);
+            console.error("Error saving content:", error);
         }
     };
 
@@ -71,20 +81,45 @@ export default function EditorPage(props) {
             <Topbar title="Editor" />
             <SideBar />
             <div className="content">
-                <form onSubmit={handleSubmit}>
-                    <FormControl>
-                        <TextField label="Title" value={title} onChange={title_onchange}></TextField>
-                        <Editor
-                            value={content}
-                            init={{
-                                height: 500,
-                                menubar: false
-                            }}
-                            onEditorChange={content_onchange}
-                        />
-                        <Button type="submit">Submit</Button>
-                    </FormControl>
-                </form>
+                {isLoading ? (
+                    <Circles
+                        height="4em"
+                        width="4em"
+                        color="#1D201F"
+                        ariaLabel="circles-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
+                ) : (
+                    <form onSubmit={handleSubmit}>
+                        <FormControl>
+                            <TextField
+                                label="Title"
+                                value={title}
+                                onChange={title_onchange}
+                                sx={{ marginY: "1rem" }}
+                            ></TextField>
+                            <ChipInput
+                                label="Tags"
+                                allowDuplicates={false}
+                                defaultValue={tags}
+                                sx={{ marginY: "10rem" }}
+                                onChange={tags_onchange}
+                            />
+                            <Editor
+                                value={content}
+                                init={{
+                                    height: 600,
+                                    width: "100%",
+                                    menubar: false,
+                                }}
+                                onEditorChange={content_onchange}
+                                sx={{ marginY: "10rem" }}
+                            />
+                            <Button type="submit">Submit</Button>
+                        </FormControl>
+                    </form>
+                )}
             </div>
         </article>
     );
