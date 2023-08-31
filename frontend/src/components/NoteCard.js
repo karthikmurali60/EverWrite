@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 import { put } from "../lib/Requests";
 
 export default function NoteCard(props) {
-  const [user, setUser] = React.useState(Cookies.get("username"));
+  const user = Cookies.get("username");
   function truncate(str, l) {
     return str.length > l ? str.substring(0, l - 3) + "..." : str;
   }

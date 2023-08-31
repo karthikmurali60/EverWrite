@@ -9,7 +9,7 @@ import { Circles } from "react-loader-spinner";
 export default function TrashPage() {
   const [notes, setNotes] = React.useState([]);
   const dataFetchedRef = React.useRef(false);
-  const [user, setUser] = React.useState(Cookies.get("username"));
+  const user = Cookies.get("username");
   const [isLoading, setIsLoading] = React.useState(true);
 
   const loadData = async () => {
