@@ -1,11 +1,9 @@
 from pymongo import MongoClient
+import os
 
 class Mongo:
     def client():
-        MONGODB_HOST = 'mongo-db'
-        MONGODB_PORT = 27017
-
         # Connect to MongoDB
-        client = MongoClient(MONGODB_HOST, MONGODB_PORT, username='root', password='passwd')
+        client = MongoClient(os.environ['MONGO_URL'])
 
         return client
