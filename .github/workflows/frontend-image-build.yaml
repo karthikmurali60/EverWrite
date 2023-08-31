@@ -1,0 +1,30 @@
+name: Build and Push Frontend Docker Image
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and tag Docker image
+        run: |
+          docker build -t karthikmurali/everwrite:frontend frontend/
+          docker tag karthikmurali/everwrite:frontend karthikmurali/everwrite:frontend
+
+      - name: Push Docker image to registry
+        run: |
+          docker push karthikmurali/everwrite:frontend
