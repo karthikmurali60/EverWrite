@@ -30,7 +30,7 @@ export default function Sidebar(props) {
 
       put(url, payload_data, {
         success: function (data) {
-          window.location.href = `/api/${user}/notes/${data["note_id"]}`;
+          window.location.href = `${user}/notes/${data["note_id"]}`;
         },
       });
       // Handle response
