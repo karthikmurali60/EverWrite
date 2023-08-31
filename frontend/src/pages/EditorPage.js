@@ -20,7 +20,7 @@ export default function EditorPage() {
 
     const loadData = async () => {
         const id = window.location.pathname.split("/")[3];
-        const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes/${id}`;
+        const url = `/api/${user}/notes/${id}`;
         get(url, {
             success: function (data) {
                 setIsLoading(false);
@@ -59,7 +59,7 @@ export default function EditorPage() {
         event.preventDefault();
         try {
             const id = window.location.pathname.split("/")[3];
-            const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
+            const url = `/api/${user}/notes`;
             const payload_data = {
                 _id: id,
                 title: title,

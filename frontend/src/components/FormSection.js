@@ -29,7 +29,7 @@ export default function FormSection() {
       return false;
     }
     try {
-      const url = `${process.env.REACT_APP_BACKEND_URL}/signin`;
+      const url = `/api/signin`;
       const payload_data = {
         username: username,
       };
@@ -63,7 +63,7 @@ export default function FormSection() {
       return false;
     }
     try {
-      const url = `${process.env.REACT_APP_BACKEND_URL}/signup`;
+      const url = `/api/signup`;
       const payload_data = {
         username: username,
         name: name,

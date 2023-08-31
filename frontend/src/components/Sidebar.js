@@ -11,7 +11,7 @@ import React from "react";
 import SidebarItem from "./SidebarItem";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import CreateIcon from '@mui/icons-material/Create';
+import CreateIcon from "@mui/icons-material/Create";
 import Cookies from "js-cookie";
 import { put } from "../lib/Requests";
 
@@ -20,7 +20,7 @@ export default function Sidebar(props) {
 
   const handleClick = async () => {
     try {
-      const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
+      const url = `/api/${user}/notes`;
       const payload_data = {
         title: "Title",
         content: "",
@@ -30,7 +30,7 @@ export default function Sidebar(props) {
 
       put(url, payload_data, {
         success: function (data) {
-          window.location.href = `/${user}/notes/${data["note_id"]}`;
+          window.location.href = `/api/${user}/notes/${data["note_id"]}`;
         },
       });
       // Handle response
@@ -67,7 +67,7 @@ export default function Sidebar(props) {
           sx={{
             "&: hover": {
               backgroundColor: "#e4e0e9",
-              color: "#000000"
+              color: "#000000",
             },
             color: "#FFFFFF",
             paddingY: "12px",

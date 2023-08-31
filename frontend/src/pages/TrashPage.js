@@ -13,7 +13,7 @@ export default function TrashPage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const loadData = async () => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes?type=trash`;
+    const url = `/api/${user}/notes?type=trash`;
     get(url, {
       success: function (data) {
         setIsLoading(false);

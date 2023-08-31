@@ -21,7 +21,7 @@ export default function NoteCard(props) {
 
   function deleteNote() {
     console.log("Deleting");
-    const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
+    const url = `/api/${user}/notes`;
     put(
       url,
       {
@@ -42,7 +42,7 @@ export default function NoteCard(props) {
 
   function restoreNote() {
     console.log("Restoring");
-    const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
+    const url = `/api/${user}/notes`;
     put(
       url,
       {

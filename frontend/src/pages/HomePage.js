@@ -13,7 +13,7 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const loadData = async () => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/${user}/notes`;
+    const url = `/api/${user}/notes`;
     get(url, {
       success: function (data) {
         setIsLoading(false);
