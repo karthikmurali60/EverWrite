@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
+  namespace: everwrite
 spec:
   accessModes:
     - ReadWriteOnce
@@ -15,6 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb-deployment
+  namespace: everwrite
 spec:
   replicas: 1
   selector:
