@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: everwrite-frontend
+  namespace: everwrite
+  labels:
+    app: everwrite-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: everwrite-frontend
+  template:
+    metadata:
+      labels:
+        app: everwrite-frontend
+    spec:
+      containers:
+        - name: everwrite-frontend
+          image: karthikmurali/everwrite:frontend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: "http://everwrite-backend"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: everwrite-frontend-service
+  namespace: everwrite
+spec:
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 80
+      name: http
+  selector:
+    app: everwrite-frontend
