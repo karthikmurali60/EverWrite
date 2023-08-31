@@ -10,25 +10,25 @@ from lib.helpers import model_json
 
 
 def load(app):
-    @app.route('/<username>/notes', methods=['GET'])
+    @app.route('/api/<username>/notes', methods=['GET'])
     @cross_origin()
     def list_notes(username):
         model = ListNotes.run(request, username)
         return model_json(model)
 
-    @app.route('/<username>/notes/<note_id>', methods=['GET'])
+    @app.route('/api/<username>/notes/<note_id>', methods=['GET'])
     @cross_origin()
     def get_note(username, note_id):
         model = GetNote.run(note_id)
         return model_json(model)
 
-    @app.route('/<username>/notes', methods=['PUT'])
+    @app.route('/api/<username>/notes', methods=['PUT'])
     @cross_origin()
     def create_note(username):
         model = UpsertNote.run(request)
         return model_json(model)
 
-    @app.route('/notes/<note_id>', methods=['DELETE'])
+    @app.route('/api/notes/<note_id>', methods=['DELETE'])
     @cross_origin()
     def delete_note(note_id):
         model = DeleteNote.run(note_id)
