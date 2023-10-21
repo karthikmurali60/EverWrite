@@ -98,7 +98,7 @@ export default function EditorPage(props) {
           />
         ) : (
           <form onSubmit={handleSubmit}>
-            <FormControl>
+            <FormControl style={{ width: "100%", }}>
               <TextField
                 label="Title"
                 value={title}
@@ -109,13 +109,13 @@ export default function EditorPage(props) {
                 label="Tags"
                 allowDuplicates={false}
                 defaultValue={tags}
-                sx={{ marginY: "10rem" }}
+                style={{ marginBottom: "1rem" , marginLeft: "0.5rem", marginRight: "0.5rem"}}
                 onChange={tags_onchange}
               />
               <Editor
                 value={content}
                 init={{
-                  height: 600,
+                  height: 550,
                   width: "100%",
                   menubar: false,
                 }}

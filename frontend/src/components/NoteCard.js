@@ -9,7 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import RestorePageIcon from "@mui/icons-material/RestorePage";
 import Cookies from "js-cookie";
 import { put } from "../lib/Requests";
-import {  time_ago } from "../lib/DateTimeFormats";
+import { time_ago } from "../lib/DateTimeFormats";
 
 export default function NoteCard(props) {
   const user = Cookies.get("username");
@@ -37,6 +37,7 @@ export default function NoteCard(props) {
       {
         success: function (data) {
           console.log("Deleted");
+          props.onDelete();
         },
       }
     );
@@ -60,6 +61,7 @@ export default function NoteCard(props) {
       {
         success: function (data) {
           console.log("Restored");
+          props.onRestore();
         },
       }
     );

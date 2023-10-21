@@ -25,6 +25,10 @@ export default function HomePage() {
     });
   };
 
+  const onDelete = () => {
+    loadData();
+  }
+
   React.useEffect(() => {
     //prevents double call
     if (dataFetchedRef.current) return;
@@ -48,13 +52,13 @@ export default function HomePage() {
             wrapperClass=""
           />
         ) : notes.length === 0 ? (
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center"}}>
             <h4>You haven't created any notes yet!</h4>
           </div>
         ) : (
           <div className="cardGrid">
             {notes.map((note) => {
-              return <NoteCard key={note._id} data={note} trashed="false" />;
+              return <NoteCard key={note._id} data={note} trashed="false" onDelete={onDelete} />;
             })}
           </div>
         )}

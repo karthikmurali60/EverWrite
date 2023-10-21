@@ -25,6 +25,10 @@ export default function TrashPage() {
     });
   };
 
+  const onRestore = () => {
+    loadData();
+  }
+
   React.useEffect(() => {
     //prevents double call
     if (dataFetchedRef.current) return;
@@ -49,12 +53,12 @@ export default function TrashPage() {
           />
         ) : notes.length === 0 ? (
           <div style={{ textAlign: "center" }}>
-            <h4>You haven't created any notes yet!</h4>
+            <h4>You haven't archived any notes yet!</h4>
           </div>
         ) : (
           <div className="cardGrid">
             {notes.map((note) => {
-              return <NoteCard key={note._id} data={note} trashed="true" />;
+              return <NoteCard key={note._id} data={note} trashed="true" onRestore={onRestore} />;
             })}
           </div>
         )}
