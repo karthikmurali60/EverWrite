@@ -12,7 +12,7 @@ class UpsertNote:
         }
 
         data = request.json
-        now = datetime.now(timezone.utc).astimezone()
+        now = datetime.now(timezone.utc).isoformat()
 
         if '_id' in data and not ObjectId.is_valid(data['_id']):
             model['errors'] = {'msg': "Invalid note_id"}
