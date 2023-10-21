@@ -2,6 +2,7 @@
   width: 60%;
   flex-grow: 1;
   text-align: center;
+  margin: auto;
   color: white;
   float: left;
-  }
+}
