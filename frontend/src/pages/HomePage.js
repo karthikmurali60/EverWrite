@@ -13,7 +13,10 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const loadData = async () => {
-    const url = `/api/${user}/notes`;
+    let url = `/api/${user}/notes`;
+    if (process.env.REACT_APP_ENV === "development") {
+      url = `${process.env.REACT_APP_BACKEND_URL}/api/${user}/notes`;
+    }
     get(url, {
       success: function (data) {
         setIsLoading(false);
@@ -37,8 +40,8 @@ export default function HomePage() {
       <div className="content">
         {isLoading ? (
           <Circles
-          height="4em"
-          width="4em"
+            height="4em"
+            width="4em"
             color="#1D201F"
             ariaLabel="circles-loading"
             wrapperStyle={{}}

@@ -1,23 +1,13 @@
-FROM node:16.18 as builder
+FROM node:16.18
+
+ENV PORT=3000
 
 COPY . ./frontend
 
 WORKDIR /frontend
 
-RUN npm install --force
+RUN npm install --force 
 
-RUN npm run build
+EXPOSE 3000
 
-# ------------------------------ #
-
-FROM nginx:alpine
-
-RUN rm -rf /usr/share/nginx/html/*
-
-COPY --from=builder /frontend/build /usr/share/nginx/html
-
-COPY --from=builder /frontend/.nginx/nginx.conf /etc/nginx/nginx.conf
-
-EXPOSE 80
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]

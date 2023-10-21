@@ -5,6 +5,7 @@ services:
     build: ./frontend
     environment:
       - REACT_APP_BACKEND_URL=http://localhost:4567
+      - REACT_APP_ENV=development
     ports:
       - "3000:3000"
     volumes:
@@ -16,6 +17,8 @@ services:
 
   backend:
     build: ./backend
+    environment:
+      - MONGO_URL=mongodb://root:passwd@mongo:27017
     ports:
       - "4567:4567"
     volumes:

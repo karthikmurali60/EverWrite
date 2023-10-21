@@ -29,7 +29,10 @@ export default function FormSection() {
       return false;
     }
     try {
-      const url = `/api/signin`;
+      let url = `/api/signin`;
+      if (process.env.REACT_APP_ENV === "development") {
+        url = `${process.env.REACT_APP_BACKEND_URL}/api/signin`;
+      }
       const payload_data = {
         username: username,
       };
@@ -37,7 +40,7 @@ export default function FormSection() {
         setErrors: setErrors,
         success: function (data) {
           Cookies.set("username", username);
-          Cookies.set("name", data['name']);
+          Cookies.set("name", data["name"]);
           window.location.href = `/home`;
         },
       });
@@ -63,7 +66,10 @@ export default function FormSection() {
       return false;
     }
     try {
-      const url = `/api/signup`;
+      let url = `/api/signup`;
+      if (process.env.REACT_APP_ENV === "development") {
+        url = `${process.env.REACT_APP_BACKEND_URL}/api/signup`;
+      }
       const payload_data = {
         username: username,
         name: name,
@@ -72,7 +78,7 @@ export default function FormSection() {
         setErrors: setErrors,
         success: function (data) {
           Cookies.set("username", username);
-          Cookies.set("name", name);
+          Cookies.set("name", data["name"]);
           window.location.href = `/home`;
         },
       });
@@ -110,8 +116,8 @@ export default function FormSection() {
             <p
               style={{ cursor: "pointer", fontWeight: "bold", margin: 0 }}
               onClick={() => {
-                setErrors([])
-                setState((s) => ({ ...s, form: "signup" }))
+                setErrors([]);
+                setState((s) => ({ ...s, form: "signup" }));
               }}
             >
               Sign Up!
@@ -149,8 +155,8 @@ export default function FormSection() {
             <p
               style={{ cursor: "pointer", fontWeight: "bold", margin: 0 }}
               onClick={() => {
-                setErrors([])
-                setState((s) => ({ ...s, form: "login" }))
+                setErrors([]);
+                setState((s) => ({ ...s, form: "login" }));
               }}
             >
               Sign in!
