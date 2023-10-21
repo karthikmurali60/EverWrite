@@ -47,6 +47,10 @@ export default function TrashPage() {
             wrapperStyle={{}}
             wrapperClass=""
           />
+        ) : notes.length === 0 ? (
+          <div style={{ textAlign: "center" }}>
+            <h4>You haven't created any notes yet!</h4>
+          </div>
         ) : (
           <div className="cardGrid">
             {notes.map((note) => {

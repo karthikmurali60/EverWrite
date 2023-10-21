@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ReactTimeAgo from "react-time-ago";
 import { CardActionArea } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RestorePageIcon from "@mui/icons-material/RestorePage";
@@ -86,7 +85,6 @@ export default function NoteCard(props) {
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             Last updated:{" " + time_ago(props.data.updated_at) + " ago"}
-            <ReactTimeAgo date={props.data.updated_at} locale="en-US" />
           </Typography>
           <Typography
             variant="body2"

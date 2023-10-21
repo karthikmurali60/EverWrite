@@ -24,6 +24,8 @@ spec:
           env:
             - name: REACT_APP_BACKEND_URL
               value: "http://everwrite-backend"
+            - name: REACT_APP_ENV
+              value: "production"
 
 ---
 
