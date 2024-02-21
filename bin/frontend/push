@@ -1,0 +1,9 @@
+#! /bin/bash
+
+# script to build and push the frontend image to the Azure Container Registry
+
+az acr login --name everwriteacr
+
+docker build -t everwriteacr.azurecr.io/everwrite:frontend ../frontend -f ../frontend/Dockerfile.prod
+
+docker push everwriteacr.azurecr.io/everwrite:frontend

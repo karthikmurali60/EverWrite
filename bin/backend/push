@@ -1,0 +1,9 @@
+#! /bin/bash
+
+# script to build and push the backend image to the Azure Container Registry
+
+az acr login --name everwriteacr
+
+docker build -t everwriteacr.azurecr.io/everwrite:backend ../backend/
+
+docker push everwriteacr.azurecr.io/everwrite:backend

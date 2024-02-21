@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# script to build and push the mongo image to the Azure Container Registry
+
+az acr login --name everwriteacr
+
+az acr import -n everwriteacr --source docker.io/library/mongo:latest -t everwrite:mongo
