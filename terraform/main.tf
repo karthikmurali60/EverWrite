@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name   = "everwrite-resources"
-    storage_account_name  = "everwritetfstate"
-    container_name        = "tfstate"
-    key                   = "terraform.tfstate"
+    resource_group_name  = "everwrite-resources"
+    storage_account_name = "everwritetfstate"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
   }
 }
 
@@ -40,6 +40,5 @@ resource "azurerm_app_service" "backend" {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "DOCKER_REGISTRY_SERVER_URL"          = var.DOCKER_REGISTRY_SERVER_URL
     "DOCKER_REGISTRY_SERVER_USERNAME"     = var.DOCKER_REGISTRY_SERVER_USERNAME
-    "DOCKER_REGISTRY_SERVER_PASSWORD"     = var.DOCKER_REGISTRY_SERVER_PASSWORD
   }
 }

@@ -29,12 +29,11 @@ variable "WEBAPP_PLAN_NAME" {
 variable "WEBAPPNAME" {
   type = string
 }
-variable "DOCKER_REGISTRY_SERVER_PASSWORD" {
-  type = string
-}
+
 variable "DOCKER_REGISTRY_SERVER_URL" {
   type = string
 }
+
 variable "DOCKER_REGISTRY_SERVER_USERNAME" {
   type = string
 }
